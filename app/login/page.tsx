@@ -3,6 +3,9 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
+// import CardQuiz from "@/components/CardQuiz";
 
 export default function Login({
   searchParams,
@@ -52,6 +55,8 @@ export default function Login({
   };
 
   return (
+    <>
+    <NavBar/>
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
       <Link
         href="/"
@@ -115,5 +120,9 @@ export default function Login({
         )}
       </form>
     </div>
+    <>
+    <Footer/>
+    </>
+    </>
   );
 }

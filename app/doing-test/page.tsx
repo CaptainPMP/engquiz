@@ -1,13 +1,13 @@
 import React from 'react';
 import './doing-test.css';
+import Navbar from '@/components/NavBar';
 
 const DoTest = () => {
   return (
+    <>
+    <Navbar/>
+
     <div className="do-test">
-      <header className="header">
-        <div className="title">HiQuiz</div>
-        <div className="profile-icon">K</div>
-      </header>
       <div className="timer">
         <span role="img" aria-label="alarm-clock">⏰</span> 05:00 min
       </div>
@@ -39,6 +39,7 @@ const DoTest = () => {
         <button className="nav-button">next</button>
       </div>
     </div>
+    </>
   );
 };
 

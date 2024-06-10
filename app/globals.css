@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @layer base {
   :root {
@@ -20,12 +20,6 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-foreground/20;
-  }
-}
-
 .animate-in {
   animation: animateIn 0.3s ease 0.15s both;
 }
@@ -39,8 +33,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-body {
-  @apply bg-custom-bg;
 }

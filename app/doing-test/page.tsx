@@ -1,46 +1,76 @@
 import React from 'react';
-import './doing-test.css';
 import Navbar from '@/components/NavBar';
+import QuitButton from '@/components/QuitButton';
+import { useState, useEffect } from 'react';
 
 const DoTest = () => {
-  return (
+  const [question, setQuestion] = useState('');
+
+  useEffect(() => {
+    const fetchQuestion = async () => {
+      const { data, error } = await supabase
+        .from('Questions')
+        .select('Question');
+        .filter('Difficulty', 'eq', 'Easy');
+        .filter('Category', 'eq', '1');
+
+        if (questionError) {
+          console.error('Error fetching question:', questionError);
+        } else {
+          setQuestion(questionData[0].Question);
+  
+          const { data: choicesData, error: choicesError } = await supabase
+            .from('Choices')
+            .select('Choice')
+            .filter('QuestionId', 'eq', questionData[0].id);
+  
+          if (choicesError) {
+            console.error('Error fetching choices:', choicesError);
+          } else {
+            setChoices(choicesData.map(choice => choice.Choice));
+          }
+        }
+      };
+  
+      fetchQuestionAndChoices();
+    }, []);
+
+    const handleNext = () => {
+      if (currentIndex < questions.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      }
+    };
+  
+    const handlePrevious = () => {
+      if (currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1);
+      }
+    };
+
+
+return (
     <>
     <Navbar/>
+    <QuitButton /> 
 
-    <div className="do-test">
-      <div className="timer">
-        <span role="img" aria-label="alarm-clock">⏰</span> 05:00 min
-      </div>
-      <div className="question">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis id lectus nec dictum.
-        Praesent bibendum ultrices purus,Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Vivamus sagittis id lectus nec dictum. Praesent bibendum ultrices purus,
-      </div>
-      <div className="options">
-        <div className="option">
-          <input type="radio" id="A" name="option" value="A" />
-          <label htmlFor="A">A</label>
-        </div>
-        <div className="option">
-          <input type="radio" id="B" name="option" value="B" />
-          <label htmlFor="B">B</label>
-        </div>
-        <div className="option">
-          <input type="radio" id="C" name="option" value="C" />
-          <label htmlFor="C">C</label>
-        </div>
-        <div className="option">
-          <input type="radio" id="D" name="option" value="D" />
-          <label htmlFor="D">D</label>
-        </div>
-      </div>
-      <div className="navigation">
-        <button className="nav-button">previous</button>
-        <button className="nav-button">next</button>
-      </div>
+    <div className="question">
+      {question}
     </div>
+
+    <div className="options">
+        {choices.map((choice, index) => (
+          <div className="option" key={index}>
+            <input type="radio" id={`option-${index}`} name="option" value={choice} />
+            <label htmlFor={`option-${index}`}>{choice}</label>
+          </div>
+        ))}
+    </div>
+
+    <button onClick={handlePrevious}>Previous</button>
+    <button onClick={handleNext}>Next</button>
+
     </>
   );
-};
+};      
 
 export default DoTest;

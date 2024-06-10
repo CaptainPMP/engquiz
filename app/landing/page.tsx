@@ -1,77 +1,56 @@
-'use cilent'
+'use client'
 import React from 'react';
-import './landing.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolder, faTrophy, faChartLine, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '@/components/NavBar';
+import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import LoginButton from '@/components/LoginButton';
 
 function App() {
   return (
-    <div className="App">
-      {/* Header Section */}
-      <header>
-        <Navbar />
-        <button className="login-button">LOGIN</button>
-      </header>
+    <><NavBar />
+    <div className="flex flex-col items-center justify-center bg-custom-bg w-full">
+        <h1 className="text-4xl font-bold text-custom-footer pt-10 text-center">Welcome to Hi Quiz!</h1>
+        <p className="text-xl text-gray-600 pt-4 text-center">Here, you'll find challenging English tests every day to improve your skills and knowledge</p>
+        <p className="text-xl text-gray-600 pt-4 mb-10 text-center">Explore various level of tests we have prepared for you and start challenging yourself today!</p>
+    </div>
 
-      {/* Main Section */}
-      <main className="main">
-        {/* Welcome Section */}
-        <section className="welcome-section">
-          <h1 className="welcome-title">Welcome to Hi Quiz!</h1>
-          <div className="welcome-content">
-            <p className="welcome-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis id lectus nec dictum. Praesent bibendum ultrices purus.</p>
-            <p className="welcome-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis id lectus nec dictum. Praesent bibendum ultrices purus.</p>
-          </div>
-        </section>
+    <div className="flex flex-col justify-center items-center bg-white w-full">
+      <div className="text-center pb-8">
+        <h1 className="text-4xl mt-10 font-bold text-custom-pink">What's inside</h1>
+      </div>
 
-        {/* What's Inside Section */}
-        <section className="inside-section">
-          <h2 className="inside-title">What's <span className="inside-highlight">inside</span></h2>
-          <div className="inside-grid">
-            <div className="inside-card">
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faFolder} className="icon" />
-              </div>
-              <h3 className="card-title">Category</h3>
-              <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className="inside-card">
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faTrophy} className="icon" />
-              </div>
-              <h3 className="card-title">Daily Challenge</h3>
-              <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className="inside-card">
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faChartLine} className="icon" />
-              </div>
-              <h3 className="card-title">Performance</h3>
-              <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className="inside-card">
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faLevelUpAlt} className="icon" />
-              </div>
-              <h3 className="card-title">Level Up!</h3>
-              <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </div>
-          <div className="illustration-container">
-            <img src="path_to_image.jpg" alt="Illustration" className="illustration" /> {/* Replace with actual image path */}
-          </div>
-        </section>
-      </main>
+      <div className="flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-col border-2 border-gray-300 p-4 rounded-md shadow-lg overflow-hidden w-full md:w-1/2">
+          <h3 className="text-2xl font-bold text-custom-footer mb-2">Category</h3>
+          <p className="text-gray-600 text-sm">
+          Choose your difficulty level: Easy, Medium, or Hard, and test your English skills accordingly.</p>
+      </div>
 
-      {/* Footer Section */}
-        <button className="login-button">LOGIN</button>
-        <Footer />
-      
+      <div className="flex flex-col border-2 border-gray-300 p-4 rounded-md shadow-lg overflow-hidden w-full md:w-1/2">
+          <h3 className="text-2xl font-bold text-custom-footer mb-2">Level Up!</h3>
+          <p className="text-gray-600 text-sm">
+            Challenge yourself to higher difficulty levels and enhance your English skills accordingly.
+          </p>
+        </div>
+
+        <div className="flex flex-col border-2 border-gray-300 p-4 rounded-md shadow-lg overflow-hidden w-full md:w-1/2 mb-10">
+        <h3 className="text-2xl font-bold text-custom-footer mb-2">A Performance</h3>
+        <p className="text-gray-600 text-sm">
+          Track your test results to see your progress and identify areas for improvement.
+        </p>
+      </div>
+    </div>
 
     </div>
-  );
+
+    <div className="flex flex-col items-center justify-center bg-custom-bg w-full">
+    <div className="text-center pb-8">
+        <h1 className="text-4xl mt-10 font-bold text-custom-pink">Hi Quiz! master your exams</h1>
+        <br></br><LoginButton/>
+    </div>
+    </div>
+          
+    <Footer /></>
+    );
 }
 
 export default App;

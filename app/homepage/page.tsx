@@ -1,29 +1,30 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import CardQuiz from '@/components/CardQuiz';
-
+// import LevelCard from '@/components/LevelCard';
 interface Card {
   title: string | null;
   description: string | null;
   url: string | undefined;
   color: string | undefined;
 }
-
 interface SectionProps {
   title: string;
   cards: Card[];
 }
 
-export default function Landing() {
+export default function Homepage() {
   return (
     <>
       <NavBar />
+      {/* <LevelCard /> */}
+
       <div className="flex flex-col items-center bg-custom-color min-h-screen py-10">
         <div className="w-full max-w-5xl">
           <Section title="Easy" cards={[
-            { title: "E1", description: "test", url: "", color: "#FFDEC2" },
+            { title: "E1", description: "test", url: "./doing-test", color: "#FFDEC2" },
             { title: "E2", description: "test", url: "", color: "#FFCFD2" },
             { title: "E3", description: "test", url: "", color: "#F1C0E8" },
             { title: "E4", description: "test", url: "", color: "#CFBAF0" },

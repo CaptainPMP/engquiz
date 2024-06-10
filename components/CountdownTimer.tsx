@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const CountdownTimer = ({ onTimeUp }) => {
-  const [timeRemaining, setTimeRemaining] = useState(5 * 60);
+  const [timeRemaining, setTimeRemaining] = useState(1 * 3);
 
   useEffect(() => {
     if (timeRemaining === 0) {
@@ -20,7 +20,7 @@ const CountdownTimer = ({ onTimeUp }) => {
   const seconds = timeRemaining % 60;
 
   return (
-    <div className="timer">
+    <div className="flex justify-center items-center mt-10">
       <span role="img" aria-label="alarm-clock">⏰</span>
       {minutes.toString().padStart(2, '0')}:
       {seconds.toString().padStart(2, '0')}

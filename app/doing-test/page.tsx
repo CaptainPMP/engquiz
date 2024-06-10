@@ -86,75 +86,74 @@ function DoTest() {
     });
     setScore(totalScore);
     alert(`Your score is: ${totalScore} out of ${questions.length}`);
-    router.push({
-      pathname: '/exam-result',
-      query: { score: totalScore, total: questions.length },
-    });
   };
 
   return (
-        <div>
-          <Navbar />
+    <div>
+      <Navbar />
   
-            <div className="CountdownTimer mt-10" >
-              <span role="img" aria-label="alarm-clock">
-                <CountdownTimer onTimeUp={handleSubmit} />
-              </span>
-            </div>
+      <div className="flex justify-center items-center mt-10">
+        <span role="img" aria-label="alarm-clock">
+          <CountdownTimer onTimeUp={handleSubmit} />
+        </span>
+      </div>
   
-            <div className="question-container">
-              {questions.length > 0 ? (
-                <div>
-                  <h2 className="font-bold mb-20 flex justify-center pr-20 text-center mt-10">
-                    {questions[currentQuestion].question}
-                  </h2>
+      <div className="question-container">
+        {questions.length > 0 ? (
+          <div>
+            <h2 className="font-bold mb-20 flex justify-center pr-20 text-center mt-10">
+              {questions[currentQuestion].question}
+            </h2>
   
-                  <div className="font-medium text">
-                    {questions[currentQuestion].options.map((option, index) => (
-                      <div className="option" key={index}>
-                        <input
-                          type="radio"
-                          id={`option-${index + 1}`}
-                          name="option"
-                          value={option[0]}
-                          checked={selectedOptions[currentQuestion] === option[0]}
-                          onChange={() => handleOptionChange(currentQuestion, option[0])}
-                        />
-                        <label htmlFor={`option-${index + 1}`}>{option}</label>
-                      </div>
-                    ))}
-                  </div>
+            <div className="font-medium text text-center">
+              {questions[currentQuestion].options.map((option, index) => (
+                <div className="option" key={index}>
+                  <input
+                    type="radio"
+                    id={`option-${index + 1}`}
+                    name="option"
+                    value={option[0]}
+                    checked={selectedOptions[currentQuestion] === option[0]}
+                    onChange={() => handleOptionChange(currentQuestion, option[0])}className=" item-left mr-2"/>
+                  <label htmlFor={`option-${index + 1}`}>{option}</label>
                 </div>
-              ) : (
-                <p>Loading questions...</p>
-              )}
+              ))}
             </div>
+          </div>
+        ) : (
+          <p>Loading questions...</p>
+        )}
+      </div>
   
-            <div className="navigation flex space-x-4">
-              <button
-                className="bg-custom-footer hover:bg-custom-pink text-white font-bold py-2 px-4 rounded mt-10 mb-10"
-                onClick={handlePrevious}
-              >
-                Previous
-              </button>
+      <div className="navigation flex justify-center space-x-4">
+
+        <button
+          className="bg-custom-footer hover:bg-custom-pink text-white font-bold py-2 px-4 rounded mt-10 mb-10"
+          onClick={handlePrevious}
+        >
+          Previous
+        </button>
   
-              <button
-                className="bg-custom-footer hover:bg-custom-pink text-white font-bold py-2 px-4 rounded mt-10 mb-10"
-                onClick={handleNext}>
-                Next
-              </button>
+        <button
+          className="bg-custom-footer hover:bg-custom-pink text-white font-bold py-2 px-4 rounded mt-10 mb-10"
+          onClick={handleNext}
+        >
+          Next
+        </button>
   
-              <button
-                className="bg-custom-pink hover:bg-custom-footer text-white font-bold py-2 px-4 rounded mt-10 mb-10"
-                onClick={handleSubmit}
-              >
-                Submit
-              </button>
-            </div>
-  
-          <Footer />
-        </div>
-    );
-  }
+        <button
+          className="bg-custom-pink hover:bg-custom-footer text-white font-bold py-2 px-4 rounded mt-10 mb-10"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </div>
+      
+    <div className="flex justify-center items-center mt-20">
+    <Footer />
+    </div>
+  </div>
+);
+}
 
 export default DoTest;

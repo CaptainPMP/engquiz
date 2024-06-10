@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import CardQuiz from '@/components/CardQuiz';
-// import LevelCard from '@/components/LevelCard';
+import LevelCard from '@/components/LevelCard';
 interface Card {
   title: string | null;
   description: string | null;
@@ -19,7 +19,7 @@ export default function Homepage() {
   return (
     <>
       <NavBar />
-      {/* <LevelCard /> */}
+      <LevelCard />
 
       <div className="flex flex-col items-center bg-custom-color min-h-screen py-10">
         <div className="w-full max-w-5xl">
